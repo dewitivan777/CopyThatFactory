@@ -8,6 +8,8 @@ import { contactPageSchema } from "@/lib/structured-data";
 import { contactSchema, type ContactFormValues } from "@/lib/validation";
 import { siteConfig } from "@/data/site";
 
+export const dynamic = "force-static";
+
 export const metadata: Metadata = {
   title: "Contact",
   description:

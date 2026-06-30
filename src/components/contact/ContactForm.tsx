@@ -7,6 +7,7 @@ import { CheckCircle2, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { contactSchema, type ContactFormValues } from "@/lib/validation";
 import { capabilities } from "@/data/capabilities";
+import { siteConfig } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -68,11 +69,26 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
   async function onSubmit(values: ContactFormValues) {
     setStatus("submitting");
     setServerError(null);
+
+    // Obtain a reCAPTCHA v3 token if the site key is configured.
+    let recaptchaToken: string | undefined;
+    if (siteConfig.recaptchaSiteKey && typeof window !== "undefined" && window.grecaptcha) {
+      recaptchaToken = await new Promise<string>((resolve) =>
+        window.grecaptcha.ready(async () => {
+          const token = await window.grecaptcha.execute(
+            siteConfig.recaptchaSiteKey,
+            { action: "contact" },
+          );
+          resolve(token);
+        }),
+      );
+    }
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ ...values, recaptchaToken }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => null);

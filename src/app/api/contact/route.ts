@@ -37,6 +37,24 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  // reCAPTCHA v3 verification — only runs when a secret key is configured.
+  const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+  if (recaptchaSecret) {
+    const token = (payload as Record<string, unknown>).recaptchaToken;
+    if (!token || typeof token !== "string") {
+      return NextResponse.json({ error: "reCAPTCHA verification required." }, { status: 400 });
+    }
+    const verifyRes = await fetch(
+      `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${token}`,
+      { method: "POST" },
+    );
+    const verifyData = await verifyRes.json() as { success: boolean; score: number; action: string };
+    // Reject if verification failed or score is too low (0 = bot, 1 = human).
+    if (!verifyData.success || verifyData.score < 0.5) {
+      return NextResponse.json({ error: "reCAPTCHA check failed. Please try again." }, { status: 400 });
+    }
+  }
+
   const subject = `New enquiry from ${data.name}${
     data.company ? ` (${data.company})` : ""
   }`;

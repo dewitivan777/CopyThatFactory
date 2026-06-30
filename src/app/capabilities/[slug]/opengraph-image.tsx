@@ -1,6 +1,7 @@
 import { renderOgImage, ogSize, ogContentType } from "@/lib/og-image";
 import { getCapability, capabilities } from "@/data/capabilities";
 
+export const dynamic = "force-static";
 export const size = ogSize;
 export const contentType = ogContentType;
 export const alt = "Copy That Factory capability";

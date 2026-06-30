@@ -1,5 +1,17 @@
 import type { LucideIcon } from "lucide-react";
 
+// Extend the Window interface with third-party globals loaded via <Script>.
+declare global {
+  interface Window {
+    dataLayer: unknown[];
+    gtag: (...args: unknown[]) => void;
+    grecaptcha: {
+      ready: (cb: () => void) => void;
+      execute: (siteKey: string, options: { action: string }) => Promise<string>;
+    };
+  }
+}
+
 /**
  * A common situation a business is in when they come to us — used in the
  * homepage "How we help" overview. These are NOT products or fixed bundles:

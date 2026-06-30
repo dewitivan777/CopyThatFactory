@@ -18,6 +18,20 @@ export const siteConfig = {
    * as they go live (LinkedIn, Facebook, Google Business Profile, etc.).
    */
   sameAs: [] as string[],
+
+  /**
+   * Google Analytics 4 Measurement ID.
+   * Format: "G-XXXXXXXXXX"
+   * Leave empty ("") to disable gtag.
+   */
+  gtagId: "G-C5P63VHLEL",
+
+  /**
+   * Google reCAPTCHA v3 site key (public — safe to expose in client code).
+   * Get one at https://www.google.com/recaptcha/admin
+   * Leave empty ("") to disable reCAPTCHA.
+   */
+  recaptchaSiteKey: "6LfZ9D0tAAAAAOwHZVHme4tHGve18oOp84215hVE",
 };
 
 export const mainNav = [
