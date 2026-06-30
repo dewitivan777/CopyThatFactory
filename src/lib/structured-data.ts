@@ -18,7 +18,6 @@ export function organizationSchema(): JsonLdNode {
     name: siteConfig.name,
     url: siteConfig.url,
     email: siteConfig.email,
-    telephone: siteConfig.phone,
     description: siteConfig.description,
     slogan: siteConfig.tagline,
     image: absoluteUrl("/opengraph-image"),

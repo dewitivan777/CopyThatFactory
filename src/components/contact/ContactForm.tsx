@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CheckCircle2, AlertCircle } from "lucide-react";
@@ -52,9 +52,51 @@ interface ContactFormProps {
   defaultInterest?: ContactFormValues["interest"];
 }
 
+/**
+ * Inject the reCAPTCHA v3 script on demand and resolve once it's ready. We load
+ * it lazily — on first form interaction rather than site-wide — so reCAPTCHA's
+ * third-party cookies aren't set on pages (or visits) that never submit a form.
+ */
+let recaptchaPromise: Promise<void> | null = null;
+function loadRecaptcha(): Promise<void> {
+  if (!siteConfig.recaptchaSiteKey || typeof window === "undefined") {
+    return Promise.resolve();
+  }
+  if (recaptchaPromise) return recaptchaPromise;
+
+  recaptchaPromise = new Promise<void>((resolve, reject) => {
+    const existing = document.getElementById("recaptcha-v3");
+    if (existing) {
+      resolve();
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = "recaptcha-v3";
+    script.src = `https://www.google.com/recaptcha/api.js?render=${siteConfig.recaptchaSiteKey}`;
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => {
+      recaptchaPromise = null;
+      reject(new Error("Failed to load reCAPTCHA."));
+    };
+    document.head.appendChild(script);
+  });
+  return recaptchaPromise;
+}
+
 export function ContactForm({ defaultInterest }: ContactFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [serverError, setServerError] = useState<string | null>(null);
+  const recaptchaTriggered = useRef(false);
+
+  /** Begin loading reCAPTCHA the first time the user touches the form. */
+  function primeRecaptcha() {
+    if (recaptchaTriggered.current) return;
+    recaptchaTriggered.current = true;
+    loadRecaptcha().catch(() => {
+      // Ignore here; submit re-attempts and surfaces any error to the user.
+    });
+  }
 
   const {
     register,
@@ -70,18 +112,28 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
     setStatus("submitting");
     setServerError(null);
 
-    // Obtain a reCAPTCHA v3 token if the site key is configured.
+    // Obtain a reCAPTCHA v3 token if the site key is configured. The script is
+    // loaded lazily, so make sure it's ready before requesting a token.
     let recaptchaToken: string | undefined;
-    if (siteConfig.recaptchaSiteKey && typeof window !== "undefined" && window.grecaptcha) {
-      recaptchaToken = await new Promise<string>((resolve) =>
-        window.grecaptcha.ready(async () => {
-          const token = await window.grecaptcha.execute(
-            siteConfig.recaptchaSiteKey,
-            { action: "contact" },
-          );
-          resolve(token);
-        }),
-      );
+    if (siteConfig.recaptchaSiteKey && typeof window !== "undefined") {
+      try {
+        await loadRecaptcha();
+        recaptchaToken = await new Promise<string>((resolve) =>
+          window.grecaptcha.ready(async () => {
+            const token = await window.grecaptcha.execute(
+              siteConfig.recaptchaSiteKey,
+              { action: "contact" },
+            );
+            resolve(token);
+          }),
+        );
+      } catch {
+        setStatus("error");
+        setServerError(
+          "We couldn't load spam protection. Please try again, or email us directly.",
+        );
+        return;
+      }
     }
 
     try {
@@ -127,6 +179,7 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
+      onFocusCapture={primeRecaptcha}
       noValidate
       className="rounded-[10px] border border-rule bg-white p-6 sm:p-8"
     >

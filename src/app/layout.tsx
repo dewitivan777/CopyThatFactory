@@ -91,13 +91,9 @@ export default function RootLayout({
             </Script>
           </>
         )}
-        {/* reCAPTCHA v3 */}
-        {siteConfig.recaptchaSiteKey && (
-          <Script
-            src={`https://www.google.com/recaptcha/api.js?render=${siteConfig.recaptchaSiteKey}`}
-            strategy="afterInteractive"
-          />
-        )}
+        {/* reCAPTCHA v3 is loaded lazily from the contact form on first
+            interaction (see ContactForm), so it doesn't set third-party
+            cookies on pages that don't need it. */}
         <JsonLd data={rootGraph()} />
         <SiteGate>
           <Header />

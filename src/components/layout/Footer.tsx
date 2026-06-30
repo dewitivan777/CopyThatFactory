@@ -74,14 +74,6 @@ export function Footer() {
                   {siteConfig.email}
                 </a>
               </li>
-              <li>
-                <a
-                  href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
-                  className="text-[0.92rem] text-ink-soft transition-colors hover:text-blue-deep"
-                >
-                  {siteConfig.phone}
-                </a>
-              </li>
               <li className="text-[0.92rem] text-ink-soft">{siteConfig.location}</li>
             </ul>
           </div>

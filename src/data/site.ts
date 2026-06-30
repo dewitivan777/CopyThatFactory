@@ -7,8 +7,7 @@ export const siteConfig = {
   tagline:
     "Copy That Factory builds the website or app, writes the copy, runs the ads, manages the social, and handles the admin — one hands-on team for startups and small businesses, instead of juggling separate vendors.",
   url: "https://copythatfactory.co.za",
-  email: "hello@copythatfactory.co.za",
-  phone: "+27 00 000 0000",
+  email: "info@copythatfactory.co.za",
   location: "South Africa",
   /** Two-letter ISO country code, used in schema.org PostalAddress. */
   countryCode: "ZA",
