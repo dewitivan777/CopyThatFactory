@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* ===== Design tokens (ported from the original concept) ===== */
+@theme {
+  --color-bg: #f6fafd;
+  --color-bg-panel: #edf6fb;
+  --color-ink: #0e2a3d;
+  --color-ink-soft: #45607a;
+  --color-blue: #2d8fc1;
+  --color-blue-deep: #1c6e9c;
+  --color-blue-soft: #bee3f4;
+  --color-blue-line: #9ad0ea;
+  --color-rule: #d7eaf5;
+  --color-amber: #d98a3d;
+
+  --font-serif: var(--font-fraunces), Georgia, serif;
+  --font-sans: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+
+  --radius-base: 4px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    line-height: 1.07;
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-blue-deep);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+    }
+  }
+}
