@@ -1,21 +1,38 @@
 import {
-  PenTool,
-  Megaphone,
-  FileText,
   Code2,
+  PenTool,
+  FileText,
+  Megaphone,
+  Share2,
   Inbox,
 } from "lucide-react";
 import type { Capability } from "@/types";
 
 export const capabilities: Capability[] = [
   {
-    slug: "brand-design",
+    slug: "web-app-builds",
     index: "01",
+    name: "Web & App Builds",
+    summary:
+      "Fast, modern websites and web apps for startups and small businesses — from a landing page to a focused custom tool, built to grow with you.",
+    description:
+      "Fast, mobile-first websites and web apps built for startups and smaller businesses — usually a marketing site, a landing page, or a focused custom tool that earns its keep from day one. Bigger, more complex platforms are possible, but our sweet spot is getting a lean, well-built product live quickly. Everything is built to support the marketing around it, not to sit in isolation.",
+    deliverables: [
+      "Website and landing page builds",
+      "Focused web apps and custom tools",
+      "Mobile-first, fast-loading pages",
+      "CMS, analytics, and conversion tracking",
+    ],
+    icon: Code2,
+  },
+  {
+    slug: "brand-design",
+    index: "02",
     name: "Brand Design",
     summary:
-      "Logo, colour, type, and visual guidelines that make ads, website, and print all look like one business.",
+      "Logo, colour, type, and visual guidelines that make your ads, website, and social all look like one business.",
     description:
-      "A brand system gives every touchpoint a shared visual language, so your ads, website, and printed material read as one credible business rather than three disconnected efforts. We design the identity and document it so it stays consistent as you grow.",
+      "A brand system gives every touchpoint a shared visual language, so your website, ads, and social read as one credible business rather than three disconnected efforts. We design the identity and document it so it stays consistent as you grow.",
     deliverables: [
       "Logo design and usage rules",
       "Colour palette and typography system",
@@ -23,22 +40,6 @@ export const capabilities: Capability[] = [
       "Templates for social, ads, and documents",
     ],
     icon: PenTool,
-  },
-  {
-    slug: "ads-management",
-    index: "02",
-    name: "Ads Management",
-    summary:
-      "Google, Meta, and LinkedIn campaigns — strategy, setup, daily optimisation, and reporting you can actually read.",
-    description:
-      "We plan, launch, and manage paid campaigns across Google, Meta, and LinkedIn — then optimise them daily based on what's actually converting. Reporting is in plain language, so you always know what your spend is doing.",
-    deliverables: [
-      "Channel and audience strategy",
-      "Campaign setup and tracking",
-      "Daily optimisation and A/B testing",
-      "Plain-language performance reporting",
-    ],
-    icon: Megaphone,
   },
   {
     slug: "copywriting",
@@ -57,29 +58,45 @@ export const capabilities: Capability[] = [
     icon: FileText,
   },
   {
-    slug: "web-app-builds",
+    slug: "ads-management",
     index: "04",
-    name: "Web & App Builds",
+    name: "Ads Management",
     summary:
-      "Bespoke websites and web apps, from a single landing page to custom tools — built to support whatever the marketing is doing.",
+      "Google, Meta, and LinkedIn campaigns — strategy, setup, daily optimisation, and reporting you can actually read.",
     description:
-      "Fast, mobile-first websites and bespoke web apps — from a single landing page to custom internal tools. Everything is built to support the marketing around it, not to sit in isolation.",
+      "We plan, launch, and manage paid campaigns across Google, Meta, and LinkedIn — then optimise them daily based on what's actually converting. We keep budgets realistic for a startup or small business, and reporting is in plain language, so you always know what your spend is doing.",
     deliverables: [
-      "Bespoke website and web app builds",
-      "Mobile-first, fast-loading pages",
-      "CMS or custom tooling as needed",
-      "Analytics and conversion tracking",
+      "Channel and audience strategy",
+      "Campaign setup and tracking",
+      "Daily optimisation and A/B testing",
+      "Plain-language performance reporting",
     ],
-    icon: Code2,
+    icon: Megaphone,
+  },
+  {
+    slug: "social-media-management",
+    index: "05",
+    name: "Social Media Management",
+    summary:
+      "A consistent, on-brand social presence — content, scheduling, and community management across the platforms that matter to you.",
+    description:
+      "A consistent, on-brand social presence without the daily scramble. We plan and create the posts, schedule them, and handle the back-and-forth with your audience across the channels that fit your business — so your social stays active while you get on with running things.",
+    deliverables: [
+      "Content planning and a posting calendar",
+      "Post creation — copy and visuals",
+      "Scheduling and consistent publishing",
+      "Community management and engagement",
+    ],
+    icon: Share2,
   },
   {
     slug: "admin-support",
-    index: "05",
+    index: "06",
     name: "Admin Support",
     summary:
-      "Inbox, calendar, invoicing, and lead follow-up handled so campaigns don't go cold waiting on a reply.",
+      "Inbox, calendar, invoicing, and lead follow-up handled so enquiries don't go cold waiting on a reply.",
     description:
-      "The recurring admin no one has time for — inbox, calendar, invoicing, and lead follow-up — handled daily so the leads your campaigns generate don't go cold waiting on a reply.",
+      "The recurring admin no one has time for — inbox, calendar, invoicing, and lead follow-up — handled daily so the leads your marketing generates don't go cold waiting on a reply.",
     deliverables: [
       "Inbox and calendar management",
       "Lead follow-up and qualification",

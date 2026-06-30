@@ -12,12 +12,12 @@ export function CapabilitiesSection() {
       <Container>
         <SectionHead
           eyebrow="What we do"
-          title="Five capabilities, combined however you need them."
+          title="Six capabilities, combined however you need them."
           description="Each capability is available on its own or alongside the others. We evaluate what your business actually needs and quote the work accordingly — no fixed bundles, no paying for things you don't."
           className="mb-12"
         />
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule sm:grid-cols-3 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-rule bg-rule sm:grid-cols-2 lg:grid-cols-3">
           {capabilities.map((cap) => {
             const Icon = cap.icon;
             return (

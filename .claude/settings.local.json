@@ -8,7 +8,11 @@
       "PowerShell(npm ls next 2>&1)",
       "PowerShell(npm run typecheck 2>&1)",
       "PowerShell(npm run build 2>&1)",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "PowerShell(npx tsc --noEmit -p tsconfig.json)",
+      "PowerShell(if \\($?\\) { \"TYPECHECK OK\" })",
+      "mcp__visualize__read_me",
+      "PowerShell(node -e \"try{require.resolve\\('nodemailer'\\);console.log\\('nodemailer: installed'\\)}catch{console.log\\('nodemailer: MISSING'\\)}\")"
     ]
   }
 }

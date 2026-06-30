@@ -10,7 +10,7 @@ export function HowWeHelpSection() {
           center
           eyebrow="How we help"
           title="Start with the bottleneck holding you back."
-          description="Most businesses come to us in one of three situations. There are no set packages — each shows how we'd typically approach the problem and which capabilities we'd draw on, then we scope and quote to your specific needs."
+          description="Most startups and small businesses come to us in one of three situations. There are no set packages — each shows how we'd typically approach the problem and which capabilities we'd draw on, then we scope and quote to your specific needs."
           className="mb-12"
         />
         <SituationSelector />

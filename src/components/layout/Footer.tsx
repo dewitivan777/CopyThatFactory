@@ -91,7 +91,7 @@ export function Footer() {
           <span>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </span>
-          <span>Brand, ads, copy, admin &amp; web — under one roof.</span>
+          <span>Web, brand, copy, ads, social &amp; admin — under one roof.</span>
         </div>
       </Container>
     </footer>

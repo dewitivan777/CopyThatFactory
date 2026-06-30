@@ -9,9 +9,9 @@ import { CtaBand } from "@/components/home/CtaBand";
 import { generalFaqs } from "@/data/faqs";
 
 export const metadata: Metadata = {
-  title: "Marketing, Copywriting, Admin & Web Builds for South African Businesses",
+  title: "Web, Brand, Copy, Ads & Social for South African Startups & Small Businesses",
   description:
-    "Copy That Factory runs your ads, writes the copy, builds the website or app, and handles the admin — as one team, scoped and quoted around what your business actually needs.",
+    "Copy That Factory builds the website or app, writes the copy, runs the ads, manages the social, and handles the admin — one hands-on team for South African startups and small businesses, scoped and quoted around what you actually need.",
   alternates: { canonical: "/" },
 };
 

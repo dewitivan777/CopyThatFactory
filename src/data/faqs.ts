@@ -11,7 +11,7 @@ export const generalFaqs: Faq[] = [
   {
     question: "What does Copy That Factory do?",
     answer:
-      "Copy That Factory is a South African marketing agency that combines five capabilities under one roof: brand design, paid ads management, copywriting, web and app builds, and admin support. Instead of hiring four separate vendors, you get one coordinated team — and the work is scoped and quoted around what your business actually needs.",
+      "Copy That Factory is a South African marketing partner for startups and small businesses, combining six capabilities under one roof: web and app builds, brand design, copywriting, paid ads management, social media management, and admin support. Instead of hiring several separate vendors, you get one hands-on team — and the work is scoped and quoted around what your business actually needs.",
   },
   {
     question: "What is AEO, and how is it different from SEO?",
@@ -21,7 +21,7 @@ export const generalFaqs: Faq[] = [
   {
     question: "Do you sell fixed packages?",
     answer:
-      "No. Copy That Factory doesn't sell set packages or bundles. Each capability — brand design, ads management, copywriting, web and app builds, or admin support — can be used on its own or combined with others, and every engagement is evaluated and quoted to your specific requirements, so you only pay for the work you need.",
+      "No. Copy That Factory doesn't sell set packages or bundles. Each capability — web and app builds, brand design, copywriting, ads management, social media management, or admin support — can be used on its own or combined with others, and every engagement is evaluated and quoted to your specific requirements, so you only pay for the work you need.",
   },
   {
     question: "How do I know what I need?",
@@ -36,6 +36,6 @@ export const generalFaqs: Faq[] = [
   {
     question: "Who does Copy That Factory work with?",
     answer:
-      "Copy That Factory works with South African businesses — from professional services firms to growing companies — that want their brand, ads, copy, website, and admin handled by one coordinated team rather than several disconnected suppliers.",
+      "Copy That Factory works with South African startups and small businesses that want their website, brand, copy, ads, social media, and admin handled by one hands-on team rather than several disconnected suppliers. We're built for lean, growing businesses rather than large enterprises.",
   },
 ];

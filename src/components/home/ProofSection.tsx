@@ -1,8 +1,8 @@
 import { Container } from "@/components/ui/Container";
 
 const points = [
-  "One team across ads, copy, web, and admin — one point of contact.",
-  "Work scoped around outcomes, not departments.",
+  "One hands-on team across web, brand, copy, ads, social, and admin — one point of contact.",
+  "Work scoped around outcomes, not departments — sized for startups and small businesses.",
   "Plain-language reporting on what the ad spend is actually doing.",
 ];
 
@@ -17,7 +17,7 @@ export function ProofSection() {
             through three different agencies.&rdquo;
           </blockquote>
           <cite className="mt-5 block text-[0.86rem] not-italic text-blue-soft">
-            — Owner, professional services business, Gauteng
+            — Founder, small business, Gauteng
           </cite>
         </div>
 

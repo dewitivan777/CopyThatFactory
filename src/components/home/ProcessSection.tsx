@@ -10,7 +10,7 @@ export function ProcessSection() {
           center
           eyebrow="How we work"
           title="Diagnose. Plan. Build. Run."
-          description="The same four stages whether we're handling one capability or all five — so you always know what's happening and why."
+          description="The same four stages whether we're handling one capability or all six — so you always know what's happening and why."
           className="mb-12"
         />
 

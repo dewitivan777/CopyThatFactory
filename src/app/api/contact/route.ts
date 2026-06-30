@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 import { contactSchema } from "@/lib/validation";
 import { capabilities } from "@/data/capabilities";
 
@@ -49,7 +50,6 @@ export async function POST(request: Request) {
       { method: "POST" },
     );
     const verifyData = await verifyRes.json() as { success: boolean; score: number; action: string };
-    // Reject if verification failed or score is too low (0 = bot, 1 = human).
     if (!verifyData.success || verifyData.score < 0.5) {
       return NextResponse.json({ error: "reCAPTCHA check failed. Please try again." }, { status: 400 });
     }
@@ -70,44 +70,35 @@ export async function POST(request: Request) {
   ].filter(Boolean);
   const text = lines.join("\n");
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL;
-  const fromEmail = process.env.CONTACT_FROM_EMAIL;
+  const smtpHost = process.env.SMTP_HOST;
+  const smtpUser = process.env.SMTP_USER;
+  const smtpPass = process.env.SMTP_PASS;
+  const toEmail  = process.env.CONTACT_TO_EMAIL;
 
-  // If email delivery isn't configured yet, don't fail the user. Log the
-  // submission so it can be picked up, and return success. Wire up Resend
-  // (or any provider) by setting the env vars in .env.local — see .env.example.
-  if (!apiKey || !toEmail || !fromEmail) {
-    console.info("[contact] Email delivery not configured. Submission:\n", text);
+  // If SMTP isn't configured, log the submission and return success so the
+  // user isn't blocked. Set the env vars in .env.production to enable delivery.
+  if (!smtpHost || !smtpUser || !smtpPass || !toEmail) {
+    console.info("[contact] SMTP not configured. Submission:\n", text);
     return NextResponse.json({ ok: true });
   }
 
-  try {
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: [toEmail],
-        reply_to: data.email,
-        subject,
-        text,
-      }),
-    });
+  const transporter = nodemailer.createTransport({
+    host: smtpHost,
+    port: parseInt(process.env.SMTP_PORT ?? "465", 10),
+    secure: (process.env.SMTP_PORT ?? "465") === "465",
+    auth: { user: smtpUser, pass: smtpPass },
+  });
 
-    if (!res.ok) {
-      const detail = await res.text().catch(() => "");
-      console.error("[contact] Resend error:", res.status, detail);
-      return NextResponse.json(
-        { error: "We couldn't send your message. Please email us directly." },
-        { status: 502 },
-      );
-    }
+  try {
+    await transporter.sendMail({
+      from: `"Copy That Factory" <${smtpUser}>`,
+      to: toEmail,
+      replyTo: data.email,
+      subject,
+      text,
+    });
   } catch (err) {
-    console.error("[contact] Delivery failed:", err);
+    console.error("[contact] SMTP delivery failed:", err);
     return NextResponse.json(
       { error: "We couldn't send your message. Please email us directly." },
       { status: 502 },

@@ -19,14 +19,14 @@ export const situations: Situation[] = [
     problem:
       "You're hard to find. Search visibility is low, the website is dated or missing, and the brand doesn't look credible enough to win trust.",
     summary:
-      "We'd usually start by making you credible and findable — a brand that looks the part, copy that ranks, and a fast website built around it.",
+      "We'd usually start by making you credible and findable — a fast website built around your goals, a brand that looks the part, and copy that ranks.",
     typicalWork: [
+      "A new website or web app build, fast and mobile-first",
       "Brand identity & visual design, so every touchpoint looks consistent",
       "Website copywriting, written to convert and to rank",
       "SEO & AEO structuring, so search engines and AI answer tools surface you",
-      "A new website or web app build, fast and mobile-first",
     ],
-    capabilities: ["brand-design", "copywriting", "web-app-builds"],
+    capabilities: ["web-app-builds", "brand-design", "copywriting"],
   },
   {
     slug: "get-leads",
@@ -39,13 +39,19 @@ export const situations: Situation[] = [
     problem:
       "People can find you, but enquiries aren't coming. Either ads aren't running, or the ones that are aren't converting into real demand.",
     summary:
-      "Here we'd focus on turning attention into enquiries — paid campaigns and the landing pages behind them, managed and optimised.",
+      "Here we'd focus on turning attention into enquiries — paid campaigns, a steady social presence, and the landing pages behind them, managed and optimised.",
     typicalWork: [
       "Paid ads strategy and setup across Google, Meta & LinkedIn",
       "Ongoing campaign management, testing, and optimisation",
+      "Social media content and community management to build a steady audience",
       "Landing page copy and build matched to each campaign",
     ],
-    capabilities: ["ads-management", "copywriting", "web-app-builds"],
+    capabilities: [
+      "ads-management",
+      "social-media-management",
+      "copywriting",
+      "web-app-builds",
+    ],
   },
   {
     slug: "stay-running",
