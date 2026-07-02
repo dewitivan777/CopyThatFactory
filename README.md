@@ -41,7 +41,6 @@ src/
 │   │   ├── page.tsx          # Capabilities index — the core offering
 │   │   └── [slug]/page.tsx   # Dynamic capability detail (static-generated)
 │   ├── contact/page.tsx      # Contact page (reads ?interest= to preselect)
-│   ├── api/contact/route.ts  # Contact form submission handler
 │   ├── sitemap.ts            # Generated sitemap.xml
 │   ├── robots.ts             # Generated robots.txt
 │   └── not-found.tsx         # 404 page
@@ -54,6 +53,13 @@ src/
 ├── lib/                      # Validation schema + small utilities
 └── types/                    # Shared TypeScript types
 ```
+
+The site is deployed as a static export (see `next.config.ts`) to shared FTP
+hosting, which can't run Next.js API routes. The contact form instead posts
+to [`public/contact.php`](public/contact.php), a plain PHP handler that ships
+as-is with the static export. Copy `public/contact-config.example.php` to
+`public/contact-config.php` (gitignored) and fill in real values to enable
+delivery.
 
 ### Content model
 

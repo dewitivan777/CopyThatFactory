@@ -29,6 +29,9 @@ yarn-error.log*
 .env.deploy
 .env.production
 
+# contact form secrets (real values — copy from contact-config.example.php)
+/public/contact-config.php
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
