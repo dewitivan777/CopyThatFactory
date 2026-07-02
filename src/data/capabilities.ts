@@ -16,10 +16,11 @@ export const capabilities: Capability[] = [
     summary:
       "Fast, modern websites and web apps for startups and small businesses — from a landing page to a focused custom tool, built to grow with you.",
     description:
-      "Fast, mobile-first websites and web apps built for startups and smaller businesses — usually a marketing site, a landing page, or a focused custom tool that earns its keep from day one. Bigger, more complex platforms are possible, but our sweet spot is getting a lean, well-built product live quickly. Everything is built to support the marketing around it, not to sit in isolation.",
+      "Fast, mobile-first websites and web apps built for startups and smaller businesses — usually a marketing site, a landing page, or a focused custom tool that earns its keep from day one. We work in React, .NET, and other major frameworks, so we can match whatever stack suits the project or your existing team. Bigger, more complex platforms are possible, but our sweet spot is getting a lean, well-built product live quickly. Everything is built to support the marketing around it, not to sit in isolation.",
     deliverables: [
       "Website and landing page builds",
       "Focused web apps and custom tools",
+      "React, .NET, and other major frameworks",
       "Mobile-first, fast-loading pages",
       "CMS, analytics, and conversion tracking",
     ],
