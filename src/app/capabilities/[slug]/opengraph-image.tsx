@@ -4,7 +4,7 @@ import { getCapability, capabilities } from "@/data/capabilities";
 export const dynamic = "force-static";
 export const size = ogSize;
 export const contentType = ogContentType;
-export const alt = "Copy That Factory capability";
+export const alt = "Copy That capability";
 
 export function generateStaticParams() {
   return capabilities.map((cap) => ({ slug: cap.slug }));
@@ -19,6 +19,6 @@ export default async function Image({
   const cap = getCapability(slug);
   return renderOgImage({
     eyebrow: "Capability",
-    title: cap?.name ?? "Copy That Factory",
+    title: cap?.name ?? "Copy That",
   });
 }

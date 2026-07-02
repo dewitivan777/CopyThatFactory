@@ -25,7 +25,7 @@ export function Footer() {
       <Container>
         <div className="grid grid-cols-1 gap-10 border-b border-rule pb-9 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
-            <Logo />
+            <Logo height={40} />
             <p className="mt-2.5 max-w-[260px] text-[0.92rem] leading-relaxed text-ink-soft">
               {siteConfig.description}
             </p>

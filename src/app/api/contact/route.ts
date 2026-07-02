@@ -91,7 +91,7 @@ export async function POST(request: Request) {
 
   try {
     await transporter.sendMail({
-      from: `"Copy That Factory" <${smtpUser}>`,
+      from: `"Copy That" <${smtpUser}>`,
       to: toEmail,
       replyTo: data.email,
       subject,

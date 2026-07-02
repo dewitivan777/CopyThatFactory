@@ -27,7 +27,7 @@ export default function CapabilitiesPage() {
       <PageHeader
         eyebrow="What we do"
         title="Six capabilities, combined however you need them."
-        description="This is everything Copy That Factory can do. Use one capability on its own or combine several — we evaluate your requirements and quote the work to fit, with no fixed packages."
+        description="This is everything Copy That can do. Use one capability on its own or combine several — we evaluate your requirements and quote the work to fit, with no fixed packages."
       />
 
       <section className="py-16 sm:py-20">

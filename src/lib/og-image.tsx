@@ -5,13 +5,13 @@ export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
 
 const colors = {
-  bg: "#F6FAFD",
-  panel: "#EDF6FB",
+  bg: "#F5F9F9",
+  panel: "#EBF3F4",
   ink: "#0E2A3D",
   inkSoft: "#45607A",
-  blue: "#2D8FC1",
-  blueDeep: "#1C6E9C",
-  rule: "#D7EAF5",
+  blue: "#086972",
+  blueDeep: "#044B51",
+  rule: "#E6F0F1",
 };
 
 /**

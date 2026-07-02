@@ -4,6 +4,7 @@ import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { SiteGate } from "@/components/layout/SiteGate";
+import { ButterflyCursor } from "@/components/ui/ButterflyCursor";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { rootGraph } from "@/lib/structured-data";
 import { siteConfig } from "@/data/site";
@@ -11,7 +12,9 @@ import "./globals.css";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  // Load the variable font with its optical-size axis so large "display"
+  // headings pick up the high thick/thin contrast seen in the brand reference.
+  axes: ["opsz", "SOFT", "WONK"],
   variable: "--font-fraunces",
   display: "swap",
 });
@@ -100,6 +103,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </SiteGate>
+        <ButterflyCursor />
       </body>
     </html>
   );

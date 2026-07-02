@@ -13,7 +13,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-rule bg-bg/90 backdrop-blur-md">
       <div className="mx-auto flex max-w-[1180px] items-center justify-between px-5 py-[18px] sm:px-8">
-        <Logo />
+        <Logo priority />
 
         <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
           {mainNav.map((item) => (
@@ -28,7 +28,7 @@ export function Header() {
         </nav>
 
         <div className="hidden md:block">
-          <ButtonLink href="/contact">Get a quote</ButtonLink>
+          <ButtonLink href="/contact">Talk to Us</ButtonLink>
         </div>
 
         <button

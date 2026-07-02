@@ -2,22 +2,29 @@
 
 /* ===== Design tokens (ported from the original concept) ===== */
 @theme {
-  --color-bg: #f6fafd;
-  --color-bg-panel: #edf6fb;
+  --color-bg: #f5f9f9;
+  --color-bg-panel: #ebf3f4;
   --color-ink: #0e2a3d;
   --color-ink-soft: #45607a;
-  --color-blue: #2d8fc1;
-  --color-blue-deep: #1c6e9c;
-  --color-blue-soft: #bee3f4;
-  --color-blue-line: #9ad0ea;
-  --color-rule: #d7eaf5;
-  --color-amber: #d98a3d;
+  --color-blue: #086972;
+  --color-blue-deep: #044b51;
+  --color-blue-soft: #cee1e3;
+  --color-blue-line: #a9cbce;
+  --color-rule: #e6f0f1;
+  /* Monarch-orange spot accent, drawn from the brand look-and-feel reference. */
+  --color-amber: #e0791e;
 
+  --radius-base: 4px;
+}
+
+/* Fonts must be `inline` so the `font-sans`/`font-serif`/`font-mono` utilities
+   resolve the next/font CSS variables (set on <body>) directly. Declared in a
+   plain @theme, Tailwind emits `var(--font-*)` references that don't resolve at
+   runtime, silently dropping the site back to system fonts. */
+@theme inline {
   --font-serif: var(--font-fraunces), Georgia, serif;
   --font-sans: var(--font-plex-sans), system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), ui-monospace, monospace;
-
-  --radius-base: 4px;
 }
 
 @layer base {
@@ -29,17 +36,21 @@
   body {
     background-color: var(--color-bg);
     color: var(--color-ink);
-    font-family: var(--font-sans);
+    /* Reference the next/font variable directly — `@theme inline` fonts are not
+       emitted as :root custom properties. */
+    font-family: var(--font-plex-sans), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
   h1,
   h2,
   h3 {
-    font-family: var(--font-serif);
+    font-family: var(--font-fraunces), Georgia, serif;
     font-weight: 600;
     letter-spacing: -0.01em;
     line-height: 1.07;
+    /* Let the variable serif adapt its contrast to the heading size. */
+    font-optical-sizing: auto;
   }
 
   *:focus-visible {
@@ -57,5 +68,56 @@
       transition-duration: 0.01ms !important;
       animation-duration: 0.01ms !important;
     }
+  }
+}
+
+/* ===== Look-and-feel signatures (from the brand reference document) ===== */
+
+/* Soft teal → pale wash used behind hero/page-header blocks. */
+@utility bg-editorial-gradient {
+  background: linear-gradient(180deg, #f1f9f8 0%, #e4f3f2 55%, #d3ebe9 100%);
+}
+
+/* Dramatic high-contrast serif for the largest display headings. Pushes the
+   variable font to its maximum optical size for the pronounced thick/thin feel
+   of the reference's "PRACTICE MATTERS" headline. */
+@utility text-display {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-variation-settings: "opsz" 144, "wght" 620, "SOFT" 0, "WONK" 0;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+/* Playful monarch cursor on interactive buttons — a nod to the brand motif.
+   This static image is the no-JS / reduced-motion fallback; the animated,
+   wing-flapping version (see ButterflyCursor) enhances it when supported. */
+@utility cursor-butterfly {
+  cursor: url("/butterfly-cursor.png") 16 16, pointer;
+}
+
+/* When the animated cursor is active, hide the native one on buttons so only
+   the flapping butterfly shows (disabled buttons keep their not-allowed cursor). */
+:root.has-animated-cursor .cursor-butterfly:not(:disabled) {
+  cursor: none;
+}
+
+@keyframes butterfly-flap {
+  0%,
+  100% {
+    transform: scaleX(1) translateY(0);
+  }
+  50% {
+    transform: scaleX(0.48) translateY(-1px);
+  }
+}
+
+.butterfly-cursor-img {
+  transform-origin: center;
+  animation: butterfly-flap 0.28s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .butterfly-cursor-img {
+    animation: none;
   }
 }

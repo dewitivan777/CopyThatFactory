@@ -132,7 +132,7 @@ export function contactPageSchema(): JsonLdNode {
     url: absoluteUrl("/contact"),
     name: `Contact ${siteConfig.name}`,
     description:
-      "Get in touch with Copy That Factory. Send your website and a description of what's not working — we'll respond within one working day with a straight read on where to start.",
+      "Get in touch with Copy That. Send your website and a description of what's not working — we'll respond within one working day with a straight read on where to start.",
     inLanguage: "en-ZA",
     mainEntity: { "@id": schemaIds.organization },
   };

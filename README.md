@@ -1,4 +1,4 @@
-# Copy That Factory
+# Copy That
 
 Marketing agency website — brand, ads, copywriting, admin, and bespoke web builds, packaged around outcomes. Built with the Next.js App Router, TypeScript, and Tailwind CSS v4.
 

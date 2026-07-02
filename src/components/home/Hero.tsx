@@ -4,18 +4,18 @@ import { ButtonLink } from "@/components/ui/Button";
 
 export function Hero() {
   return (
-    <section className="pt-[88px] pb-[60px]">
+    <section className="bg-editorial-gradient pt-[88px] pb-[60px]">
       <Container>
         <div className="mx-auto max-w-[760px] text-center">
           <Eyebrow center>
             Web, brand, copy, ads, social &amp; admin — under one roof
           </Eyebrow>
-          <h1 className="my-[18px] text-[clamp(2.2rem,4vw,3.3rem)]">
+          <h1 className="text-display my-[18px] text-[clamp(2.3rem,4.5vw,3.6rem)]">
             Built around what your business needs{" "}
-            <em className="italic text-blue-deep">next.</em>
+            <em className="italic text-amber">next.</em>
           </h1>
           <p className="mx-auto mb-9 max-w-[560px] text-[1.05rem] leading-relaxed text-ink-soft">
-            Copy That Factory builds the website or app, writes the copy,
+            Copy That builds the website or app, writes the copy,
             runs the ads, manages the social, and handles the admin in
             between — one hands-on team for startups and small businesses,
             scoped and quoted around what you actually need.

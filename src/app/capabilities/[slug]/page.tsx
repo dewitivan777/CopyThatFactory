@@ -36,7 +36,7 @@ export async function generateMetadata({
       images: [
         {
           url: `/capabilities/${cap.slug}/opengraph-image`,
-          alt: `${cap.name} — Copy That Factory`,
+          alt: `${cap.name} — Copy That`,
         },
       ],
     },

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 type Variant = "primary" | "ghost";
 
 const base =
-  "inline-flex items-center justify-center gap-2 rounded-base font-sans text-[0.88rem] font-semibold transition-[transform,box-shadow,background-color,border-color] duration-150 px-5 py-[11px] disabled:cursor-not-allowed disabled:opacity-60";
+  "inline-flex items-center justify-center gap-2 rounded-base font-sans text-[0.88rem] font-semibold transition-[transform,box-shadow,background-color,border-color] duration-150 px-5 py-[11px] cursor-butterfly disabled:cursor-not-allowed disabled:opacity-60";
 
 const variants: Record<Variant, string> = {
   primary:

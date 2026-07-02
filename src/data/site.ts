@@ -1,11 +1,10 @@
 export const siteConfig = {
-  name: "Copy That Factory",
+  name: "Copy That",
   /** One-line elevator pitch, reused as the default meta description. */
   description:
     "A marketing partner for South African startups and small businesses — websites and apps, brand, copywriting, ads, social media, and admin, scoped and quoted around what you actually need.",
-  /** Longer positioning sentence for structured data / answer engines. */
-  tagline:
-    "Copy That Factory builds the website or app, writes the copy, runs the ads, manages the social, and handles the admin — one hands-on team for startups and small businesses, instead of juggling separate vendors.",
+  /** Short brand slogan from the logo lockup, used as the structured-data slogan. */
+  tagline: "Tell & Sell",
   url: "https://copythatfactory.co.za",
   email: "info@copythatfactory.co.za",
   location: "South Africa",
