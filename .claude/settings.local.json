@@ -40,7 +40,22 @@
       "PowerShell(Remove-Item -Recurse -Force \"$env:TEMP\\\\bcur\" -ErrorAction SilentlyContinue; \"cleaned\")",
       "PowerShell($scratch = \"$env:TEMP\\\\bfly2\"; New-Item -ItemType Directory -Force $scratch | Out-Null; Set-Location $scratch; npm init -y | Out-Null; npm install @napi-rs/canvas 2>&1 | Select-Object -Last 2)",
       "PowerShell(Set-Location \"$env:TEMP\\\\bfly2\"; node extract.mjs 2>&1 | Select-Object -First 5)",
-      "PowerShell(Remove-Item -Recurse -Force \"$env:TEMP\\\\bfly2\" -ErrorAction SilentlyContinue; \"cleaned\")"
+      "PowerShell(Remove-Item -Recurse -Force \"$env:TEMP\\\\bfly2\" -ErrorAction SilentlyContinue; \"cleaned\")",
+      "Bash(ls -la out/capabilities/brand-design/opengraph-image)",
+      "Bash(npx --yes serve out -l 5055)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5055/capabilities/brand-design/)",
+      "Bash(curl -s http://localhost:5055/capabilities/brand-design/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code} %{content_type}\\\\n\" http://localhost:5055/capabilities/brand-design/opengraph-image)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5055/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5055/capabilities/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5055/contact/)",
+      "Bash(kill %1)",
+      "Bash(ls -la out/contact)",
+      "Bash(ls -la out/contact.html)",
+      "Bash(npx --yes serve out -l 5056)",
+      "Bash(curl -sL -o /dev/null -w \"final=%{http_code} redirects=%{num_redirects} url=%{url_effective}\\\\n\" http://localhost:5056/contact)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://localhost:5056/contact/)",
+      "Bash(curl -sL http://localhost:5056/contact)"
     ]
   }
 }
