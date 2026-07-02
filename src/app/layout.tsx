@@ -3,7 +3,6 @@ import Script from "next/script";
 import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { SiteGate } from "@/components/layout/SiteGate";
 import { ButterflyCursor } from "@/components/ui/ButterflyCursor";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { rootGraph } from "@/lib/structured-data";
@@ -98,11 +97,9 @@ export default function RootLayout({
             interaction (see ContactForm), so it doesn't set third-party
             cookies on pages that don't need it. */}
         <JsonLd data={rootGraph()} />
-        <SiteGate>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </SiteGate>
+        <Header />
+        <main>{children}</main>
+        <Footer />
         <ButterflyCursor />
       </body>
     </html>
