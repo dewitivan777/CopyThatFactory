@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import { Suspense } from "react";
 import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ButterflyCursor } from "@/components/ui/ButterflyCursor";
 import { JsonLd } from "@/components/seo/JsonLd";
+import { Analytics } from "@/components/seo/Analytics";
 import { rootGraph } from "@/lib/structured-data";
 import { siteConfig } from "@/data/site";
 import "./globals.css";
@@ -76,23 +77,11 @@ export default function RootLayout({
       <body
         className={`${fraunces.variable} ${plexSans.variable} ${plexMono.variable} antialiased`}
       >
-        {/* Google Analytics */}
-        {siteConfig.gtagId && (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${siteConfig.gtagId}`}
-              strategy="afterInteractive"
-            />
-            <Script id="gtag-init" strategy="afterInteractive">
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${siteConfig.gtagId}', { anonymize_ip: true });
-              `}
-            </Script>
-          </>
-        )}
+        {/* Google Analytics — only loads on the production host, and tracks
+            client-side route changes since next/link never fully reloads. */}
+        <Suspense fallback={null}>
+          <Analytics />
+        </Suspense>
         {/* reCAPTCHA v3 is loaded lazily from the contact form on first
             interaction (see ContactForm), so it doesn't set third-party
             cookies on pages that don't need it. */}

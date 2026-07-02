@@ -146,6 +146,12 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
         const data = await res.json().catch(() => null);
         throw new Error(data?.error ?? "Something went wrong.");
       }
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "generate_lead", {
+          event_category: "contact_form",
+          event_label: values.interest ?? "not-sure",
+        });
+      }
       setStatus("success");
       reset();
     } catch (err) {
