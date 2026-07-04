@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { capabilities } from "@/data/capabilities";
+import { formatFromPrice } from "@/lib/utils";
 
 export function CapabilitiesSection() {
   return (
@@ -41,6 +42,9 @@ export function CapabilitiesSection() {
                 </h3>
                 <p className="text-[0.88rem] leading-relaxed text-ink-soft">
                   {cap.summary}
+                </p>
+                <p className="mt-3 font-mono text-[0.72rem] text-blue-deep">
+                  {formatFromPrice(cap)}
                 </p>
               </Link>
             );

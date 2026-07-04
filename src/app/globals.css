@@ -101,6 +101,23 @@
   cursor: none;
 }
 
+/* Continuous logo marquee. The track holds two identical copies of the logo
+   set; translating it by -50% scrolls exactly one copy, so the loop is seamless.
+   Even trailing spacing (margin on each card, no flex gap) keeps the -50%
+   landing pixel-perfect. */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@utility animate-marquee {
+  animation: marquee 45s linear infinite;
+}
+
 @keyframes butterfly-flap {
   0%,
   100% {

@@ -54,6 +54,14 @@ export interface Capability {
   description: string;
   /** Concrete deliverables for the detail page */
   deliverables: string[];
+  /**
+   * Indicative starting price in ZAR (e.g. 3000). A competitive "feeler"
+   * price to signal affordability to prospects — every engagement is still
+   * scoped and quoted individually, not a fixed rate card.
+   */
+  fromPrice: number;
+  /** How fromPrice is billed */
+  priceUnit: "project" | "month" | "hour";
   /** Icon rendered alongside the capability */
   icon: LucideIcon;
 }

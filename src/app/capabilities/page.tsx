@@ -7,6 +7,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { capabilities } from "@/data/capabilities";
+import { formatFromPrice } from "@/lib/utils";
 
 export const metadata: Metadata = {
   title: "Capabilities",
@@ -55,6 +56,9 @@ export default function CapabilitiesPage() {
                   <p className="mt-2.5 flex-1 text-[0.92rem] leading-relaxed text-ink-soft">
                     {cap.summary}
                   </p>
+                  <span className="mt-4 font-mono text-[0.78rem] text-blue-deep">
+                    {formatFromPrice(cap)}
+                  </span>
                   <span className="mt-5 inline-flex items-center gap-1.5 text-[0.9rem] font-semibold text-blue-deep">
                     Learn more
                     <ArrowRight

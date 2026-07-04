@@ -13,6 +13,7 @@ import {
 } from "@/lib/structured-data";
 import { capabilities, getCapability } from "@/data/capabilities";
 import { situationsForCapability } from "@/data/situations";
+import { formatFromPrice } from "@/lib/utils";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -147,6 +148,9 @@ export default async function CapabilityDetailPage({ params }: PageProps) {
 
               <p className="mt-6 text-[0.82rem] leading-relaxed text-ink-soft">
                 Every engagement is scoped and quoted to your own requirements.
+              </p>
+              <p className="mt-4 font-mono text-[0.85rem] text-blue-deep">
+                {formatFromPrice(cap)}
               </p>
               <ButtonLink
                 href={`/contact?interest=${cap.slug}`}

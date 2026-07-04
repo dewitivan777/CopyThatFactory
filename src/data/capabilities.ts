@@ -16,14 +16,17 @@ export const capabilities: Capability[] = [
     summary:
       "Fast, modern websites and web apps for startups and small businesses — from a landing page to a focused custom tool, built to grow with you.",
     description:
-      "Fast, mobile-first websites and web apps built for startups and smaller businesses — usually a marketing site, a landing page, or a focused custom tool that earns its keep from day one. We work in React, .NET, and other major frameworks, so we can match whatever stack suits the project or your existing team. Bigger, more complex platforms are possible, but our sweet spot is getting a lean, well-built product live quickly. Everything is built to support the marketing around it, not to sit in isolation.",
+      "Fast, mobile-first websites and web apps built for startups and smaller businesses — usually a marketing site, a landing page, or a focused custom tool that earns its keep from day one. We work in React, .NET, and other major frameworks, so we can match whatever stack suits the project or your existing team. Bigger, more complex platforms are possible, but our sweet spot is getting a lean, well-built product live quickly. Everything is built to support the marketing around it, not to sit in isolation. Hosting is billed separately on a platform of your choice — we handle the setup.",
     deliverables: [
       "Website and landing page builds",
       "Focused web apps and custom tools",
       "React, .NET, and other major frameworks",
       "Mobile-first, fast-loading pages",
       "CMS, analytics, and conversion tracking",
+      "Hosting setup on your chosen platform (hosting billed separately)",
     ],
+    fromPrice: 3500,
+    priceUnit: "project",
     icon: Code2,
   },
   {
@@ -40,6 +43,8 @@ export const capabilities: Capability[] = [
       "Visual guidelines document",
       "Templates for social, ads, and documents",
     ],
+    fromPrice: 700,
+    priceUnit: "project",
     icon: PenTool,
   },
   {
@@ -56,6 +61,8 @@ export const capabilities: Capability[] = [
       "AEO structuring for AI answer tools",
       "Tone of voice guidelines",
     ],
+    fromPrice: 250,
+    priceUnit: "hour",
     icon: FileText,
   },
   {
@@ -72,6 +79,8 @@ export const capabilities: Capability[] = [
       "Daily optimisation and A/B testing",
       "Plain-language performance reporting",
     ],
+    fromPrice: 1800,
+    priceUnit: "month",
     icon: Megaphone,
   },
   {
@@ -88,6 +97,8 @@ export const capabilities: Capability[] = [
       "Scheduling and consistent publishing",
       "Community management and engagement",
     ],
+    fromPrice: 1500,
+    priceUnit: "month",
     icon: Share2,
   },
   {
@@ -104,6 +115,8 @@ export const capabilities: Capability[] = [
       "Invoicing and recurring reporting",
       "Upkeep of ads, content, and site",
     ],
+    fromPrice: 1500,
+    priceUnit: "month",
     icon: Inbox,
   },
 ];
