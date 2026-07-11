@@ -7,6 +7,10 @@ export const siteConfig = {
   tagline: "Tell & Sell",
   url: "https://copythatfactory.co.za",
   email: "info@copythatfactory.co.za",
+  /** Displayed phone number, in international format. */
+  whatsapp: "+27 61 537 7327",
+  /** wa.me deep link for the WhatsApp number above (digits only, no leading +). */
+  whatsappLink: "https://wa.me/27615377327",
   location: "South Africa",
   /** Two-letter ISO country code, used in schema.org PostalAddress. */
   countryCode: "ZA",

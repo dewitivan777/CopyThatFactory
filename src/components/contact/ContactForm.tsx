@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, AlertCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { contactSchema, type ContactFormValues } from "@/lib/validation";
 import { capabilities } from "@/data/capabilities";
@@ -102,11 +102,47 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
     register,
     handleSubmit,
     reset,
+    getValues,
+    trigger,
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
     defaultValues: { interest: defaultInterest ?? "not-sure" },
   });
+
+  /**
+   * Alternative to submitting the form: builds a WhatsApp message from
+   * whatever the visitor has filled in and opens a chat with us pre-filled,
+   * so they can send it themselves instead of going through the server.
+   */
+  async function sendViaWhatsApp() {
+    const valid = await trigger(["name", "message"]);
+    if (!valid) return;
+
+    const values = getValues();
+    const interestLabel =
+      values.interest && values.interest !== "not-sure"
+        ? capabilities.find((c) => c.slug === values.interest)?.name
+        : undefined;
+
+    const lines = [
+      `Hi Copy That, I'm ${values.name}.`,
+      values.company ? `Company: ${values.company}` : null,
+      values.website ? `Website: ${values.website}` : null,
+      interestLabel ? `Interested in: ${interestLabel}` : null,
+      "",
+      values.message,
+      "",
+      values.email ? `Email: ${values.email}` : null,
+    ].filter((line): line is string => line !== null);
+
+    const text = lines.join("\n");
+    window.open(
+      `${siteConfig.whatsappLink}?text=${encodeURIComponent(text)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
+  }
 
   async function onSubmit(values: ContactFormValues) {
     setStatus("submitting");
@@ -168,7 +204,7 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
         <CheckCircle2 className="mx-auto mb-4 text-blue" size={40} />
         <h3 className="text-[1.3rem]">Thanks — we&apos;ve got it.</h3>
         <p className="mx-auto mt-2 max-w-[360px] text-ink-soft">
-          We&apos;ll review what you sent and get back to you within one working
+          We&apos;ll review what you sent and get back to you within three working
           day with a straight read on where to start.
         </p>
         <button
@@ -295,13 +331,29 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
         </p>
       )}
 
-      <Button
-        type="submit"
-        disabled={status === "submitting"}
-        className="mt-6 w-full sm:w-auto"
-      >
-        {status === "submitting" ? "Sending…" : "Send message"}
-      </Button>
+      <div className="mx-auto mt-6 flex flex-col gap-3 sm:max-w-sm">
+        <Button
+          type="submit"
+          disabled={status === "submitting"}
+          className="w-full justify-center py-3.5 text-[0.95rem]"
+        >
+          {status === "submitting" ? "Sending…" : "Send message"}
+        </Button>
+        <div className="flex items-center gap-3 text-[0.78rem] uppercase tracking-[0.08em] text-ink-soft">
+          <span className="h-px flex-1 bg-rule" />
+          or
+          <span className="h-px flex-1 bg-rule" />
+        </div>
+        <Button
+          type="button"
+          variant="ghost"
+          onClick={sendViaWhatsApp}
+          className="w-full justify-center py-3.5 text-[0.95rem]"
+        >
+          <MessageCircle size={18} aria-hidden="true" />
+          Send via WhatsApp
+        </Button>
+      </div>
     </form>
   );
 }

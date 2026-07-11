@@ -64,7 +64,7 @@ export function Header() {
                 href="/contact"
                 className="w-full"
               >
-                Get a quote
+                Talk to Us
               </ButtonLink>
             </li>
           </ul>

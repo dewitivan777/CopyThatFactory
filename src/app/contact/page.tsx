@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, MessageCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ContactForm } from "@/components/contact/ContactForm";
@@ -57,6 +57,20 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                       className="text-[0.95rem] font-medium text-ink transition-colors hover:text-blue-deep"
                     >
                       {siteConfig.email}
+                    </a>
+                  </div>
+                </li>
+                <li className="flex items-start gap-3">
+                  <MessageCircle size={18} className="mt-0.5 flex-none text-blue-deep" aria-hidden="true" />
+                  <div>
+                    <div className="text-[0.78rem] text-ink-soft">WhatsApp</div>
+                    <a
+                      href={siteConfig.whatsappLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[0.95rem] font-medium text-ink transition-colors hover:text-blue-deep"
+                    >
+                      {siteConfig.whatsapp}
                     </a>
                   </div>
                 </li>
