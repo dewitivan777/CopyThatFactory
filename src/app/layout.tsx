@@ -4,6 +4,7 @@ import { Fraunces, IBM_Plex_Sans, IBM_Plex_Mono } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ButterflyCursor } from "@/components/ui/ButterflyCursor";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Analytics } from "@/components/seo/Analytics";
 import { rootGraph } from "@/lib/structured-data";
@@ -89,6 +90,7 @@ export default function RootLayout({
         <Header />
         <main>{children}</main>
         <Footer />
+        <WhatsAppButton />
         <ButterflyCursor />
       </body>
     </html>

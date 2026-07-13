@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Mail, MapPin, MessageCircle } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ContactForm } from "@/components/contact/ContactForm";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppButton";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { contactPageSchema } from "@/lib/structured-data";
 import { contactSchema, type ContactFormValues } from "@/lib/validation";
@@ -61,7 +62,7 @@ export default async function ContactPage({ searchParams }: ContactPageProps) {
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
-                  <MessageCircle size={18} className="mt-0.5 flex-none text-blue-deep" aria-hidden="true" />
+                  <WhatsAppIcon size={18} className="mt-0.5 flex-none text-blue-deep" />
                   <div>
                     <div className="text-[0.78rem] text-ink-soft">WhatsApp</div>
                     <a

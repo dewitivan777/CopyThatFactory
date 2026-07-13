@@ -3,7 +3,8 @@
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { CheckCircle2, AlertCircle, MessageCircle } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
+import { WhatsAppIcon } from "@/components/ui/WhatsAppButton";
 import { Button } from "@/components/ui/Button";
 import { contactSchema, type ContactFormValues } from "@/lib/validation";
 import { capabilities } from "@/data/capabilities";
@@ -350,7 +351,7 @@ export function ContactForm({ defaultInterest }: ContactFormProps) {
           onClick={sendViaWhatsApp}
           className="w-full justify-center py-3.5 text-[0.95rem]"
         >
-          <MessageCircle size={18} aria-hidden="true" />
+          <WhatsAppIcon size={18} />
           Send via WhatsApp
         </Button>
       </div>
