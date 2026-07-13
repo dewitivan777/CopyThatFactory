@@ -1,3 +1,6 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { siteConfig } from "@/data/site";
 
 /** Official WhatsApp glyph, inlined as SVG so we don't need a brand-icon dependency. */
@@ -23,12 +26,15 @@ export function WhatsAppIcon({
 }
 
 /**
- * Site-wide floating "chat on WhatsApp" button. Fixed to the bottom-right
- * corner and offset above the reCAPTCHA v3 badge (which docks at the same
- * corner, ~14px from each edge, once it's lazy-loaded on the contact form),
- * so the two never overlap.
+ * Site-wide floating "chat on WhatsApp" button, fixed to the bottom-right
+ * corner. Hidden on the contact page — the reCAPTCHA badge docks in that
+ * same corner there, and the contact form already has its own "Send via
+ * WhatsApp" option.
  */
 export function WhatsAppButton() {
+  const pathname = usePathname();
+  if (pathname?.startsWith("/contact")) return null;
+
   return (
     <a
       href={siteConfig.whatsappLink}
@@ -36,7 +42,7 @@ export function WhatsAppButton() {
       rel="noopener noreferrer"
       aria-label={`Chat with us on WhatsApp: ${siteConfig.whatsapp}`}
       title="Chat with us on WhatsApp"
-      className="fixed right-4 bottom-24 z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_rgba(0,0,0,0.2)] transition-transform duration-150 hover:scale-105 cursor-butterfly sm:right-5"
+      className="fixed right-4 bottom-4 z-40 flex size-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_4px_14px_rgba(0,0,0,0.2)] transition-transform duration-150 hover:scale-105 cursor-butterfly sm:right-5 sm:bottom-5"
     >
       <WhatsAppIcon size={28} />
     </a>
